@@ -1,0 +1,9 @@
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\bin\Debug\IschoolMobileMessage.dll
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\bin\Debug\IschoolMobileMessage.pdb
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\obj\Debug\IschoolMobileMessage.csprojResolveAssemblyReference.cache
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\obj\Debug\IschoolMobileMessage.MainForm.resources
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\obj\Debug\IschoolMobileMessage.Properties.Resources.resources
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\obj\Debug\IschoolMobileMessage.csproj.GenerateResource.Cache
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\obj\Debug\IschoolMobileMessage.dll
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\obj\Debug\IschoolMobileMessage.pdb
+D:\GitHub2\IschoolMobileMessage\IschoolMobileMessage\obj\Debug\IschoolMobileMessage.Editer.resources
