@@ -156,10 +156,13 @@ namespace IschoolMobileMessage
             XmlElement root = new XmlDocument().CreateElement("Message");
             XmlElement title = root.OwnerDocument.CreateElement("Title");
             title.InnerText = "";
+            XmlElement org = root.OwnerDocument.CreateElement("Org");
+            org.InnerText = "";
             XmlElement body = root.OwnerDocument.CreateElement("Body");
             body.InnerText = str;
 
             root.AppendChild(title);
+            root.AppendChild(org);
             root.AppendChild(body);
 
             retVal = root.OuterXml;
