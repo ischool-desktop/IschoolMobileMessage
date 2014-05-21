@@ -14,7 +14,7 @@ namespace IschoolMobileMessage
         public static void main()
         {
             FISCA.Presentation.RibbonBarItem item1 = FISCA.Presentation.MotherForm.RibbonBarItems["學務作業", "校務通訊"];
-            item1["學校公告"].Image = Properties.Resources.Text_Message_128;
+            item1["學校公告"].Image = Properties.Resources.script_fav_128;
             item1["學校公告"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
             item1["學校公告"].Enable = Permissions.學校公告權限;
 
