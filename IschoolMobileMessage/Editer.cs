@@ -14,14 +14,17 @@ namespace IschoolMobileMessage
 {
     public partial class Editer : BaseForm
     {
-        private MessageRecords _Record;
-        public Editer(MessageRecords record)
+        private MessageRecord _Record;
+        public Editer(MessageRecord record)
         {
             InitializeComponent();
 
             _Record = record;
 
-            textBoxX1.Text = _Record.Content;
+            txtTitle.Text = string.IsNullOrWhiteSpace(_Record.Title) ? "" : _Record.Title;
+            txtOrg.Text = string.IsNullOrWhiteSpace(_Record.Org) ? "" : _Record.Org;
+            txtBody.Text = string.IsNullOrWhiteSpace(_Record.Body) ? "" : _Record.Body.Replace("<br>","\r\n");
+            //txtBody.Text = _Record.Content;
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
@@ -31,15 +34,15 @@ namespace IschoolMobileMessage
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            string content = textBoxX1.Text;
+            string content = txtBody.Text;
 
             XmlElement root = new XmlDocument().CreateElement("Message");
             XmlElement title = root.OwnerDocument.CreateElement("Title");
-            title.InnerText = "";
+            title.InnerText = txtTitle.Text;
             XmlElement org = root.OwnerDocument.CreateElement("Org");
-            org.InnerText = "";
+            org.InnerText = txtOrg.Text;
             XmlElement body = root.OwnerDocument.CreateElement("Body");
-            body.InnerText = content;
+            body.InnerText = txtBody.Text.Replace("\r\n", "<br>");
 
             root.AppendChild(title);
             root.AppendChild(org);
@@ -49,6 +52,14 @@ namespace IschoolMobileMessage
             MessageBox.Show("儲存完成!");
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
+        }
+
+        private void txtBody_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
+            {
+                ((TextBox)sender).SelectAll();
+            } 
         }
     }
 }

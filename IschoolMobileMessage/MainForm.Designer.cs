@@ -34,7 +34,9 @@
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.colDataTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOrg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBody = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(75, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 1;
+            this.buttonX1.TabIndex = 0;
             this.buttonX1.Text = "新增";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
@@ -60,7 +62,7 @@
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(75, 23);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.TabIndex = 2;
+            this.buttonX2.TabIndex = 1;
             this.buttonX2.Text = "刪除";
             this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
@@ -73,18 +75,21 @@
             this.buttonX3.Name = "buttonX3";
             this.buttonX3.Size = new System.Drawing.Size(75, 23);
             this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 3;
+            this.buttonX3.TabIndex = 2;
             this.buttonX3.Text = "離開";
             this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
             // 
             // dataGridViewX1
             // 
             this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
             this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDataTime,
-            this.colContent});
+            this.colTitle,
+            this.colOrg,
+            this.colBody});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -102,7 +107,7 @@
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewX1.Size = new System.Drawing.Size(579, 235);
-            this.dataGridViewX1.TabIndex = 4;
+            this.dataGridViewX1.TabIndex = 3;
             this.dataGridViewX1.DoubleClick += new System.EventHandler(this.dataGridViewX1_DoubleClick);
             // 
             // colDataTime
@@ -113,13 +118,27 @@
             this.colDataTime.ReadOnly = true;
             this.colDataTime.Width = 150;
             // 
-            // colContent
+            // colTitle
             // 
-            this.colContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colContent.DataPropertyName = "Content";
-            this.colContent.HeaderText = "公告內容";
-            this.colContent.Name = "colContent";
-            this.colContent.ReadOnly = true;
+            this.colTitle.DataPropertyName = "Title";
+            this.colTitle.HeaderText = "公告標題";
+            this.colTitle.Name = "colTitle";
+            this.colTitle.ReadOnly = true;
+            // 
+            // colOrg
+            // 
+            this.colOrg.DataPropertyName = "Org";
+            this.colOrg.HeaderText = "發文單位";
+            this.colOrg.Name = "colOrg";
+            this.colOrg.ReadOnly = true;
+            // 
+            // colBody
+            // 
+            this.colBody.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colBody.DataPropertyName = "Body";
+            this.colBody.HeaderText = "公告內容";
+            this.colBody.Name = "colBody";
+            this.colBody.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -146,6 +165,8 @@
         private DevComponents.DotNetBar.ButtonX buttonX3;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDataTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colContent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOrg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBody;
     }
 }

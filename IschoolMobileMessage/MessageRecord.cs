@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IschoolMobileMessage
 {
     [FISCA.UDT.TableName("ischool.mobile.message")]
-    public class MessageRecords : FISCA.UDT.ActiveRecord
+    public class MessageRecord : FISCA.UDT.ActiveRecord
     {
         [FISCA.UDT.Field(Field = "datetime")]
         public DateTime Datetime { get; set; }
@@ -32,5 +32,11 @@ namespace IschoolMobileMessage
 
         [FISCA.UDT.Field(Field = "status")]
         public int Status { get; set; }
+
+        public string Title { get; set; }
+
+        public string Org { get; set; }
+
+        public string Body { get; set; }
     }
 }
