@@ -14,17 +14,26 @@ namespace IschoolMobileMessage
 {
     public partial class Editer : BaseForm
     {
-        private MessageRecord _Record;
-        public Editer(MessageRecord record)
+        private ServiceCaller _caller;
+        private Response _resp;
+        public Editer(ServiceCaller caller)
         {
             InitializeComponent();
+            this._caller = caller;
+            this._resp = new Response();
+        }
 
-            _Record = record;
+        public Editer(ServiceCaller caller, Response resp)
+        {
+            InitializeComponent();
+            this._caller = caller;
+            this._resp = resp;
 
-            txtTitle.Text = string.IsNullOrWhiteSpace(_Record.Title) ? "" : _Record.Title;
-            txtOrg.Text = string.IsNullOrWhiteSpace(_Record.Org) ? "" : _Record.Org;
-            txtBody.Text = string.IsNullOrWhiteSpace(_Record.Body) ? "" : _Record.Body.Replace("<br>","\r\n");
-            //txtBody.Text = _Record.Content;
+            txtUnit.Text = _resp.Unit;
+            txtSubject.Text = _resp.Subject;
+            txtContent.Text = _resp.Content;
+            txtUrl.Text = _resp.URL;
+            dtInputer.Value = _resp.ValidDate;
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
@@ -34,32 +43,20 @@ namespace IschoolMobileMessage
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            string content = txtBody.Text;
+            _resp.School = K12.Data.School.ChineseName;
+            _resp.Unit = txtUnit.Text;
+            _resp.Subject = txtSubject.Text;
+            _resp.Content = txtContent.Text;
+            _resp.URL = txtUrl.Text;
+            _resp.ValidDate = dtInputer.Value;
 
-            XmlElement root = new XmlDocument().CreateElement("Message");
-            XmlElement title = root.OwnerDocument.CreateElement("Title");
-            title.InnerText = txtTitle.Text;
-            XmlElement org = root.OwnerDocument.CreateElement("Org");
-            org.InnerText = txtOrg.Text;
-            XmlElement body = root.OwnerDocument.CreateElement("Body");
-            body.InnerText = txtBody.Text.Replace("\r\n", "<br>");
-
-            root.AppendChild(title);
-            root.AppendChild(org);
-            root.AppendChild(body);
-
-            _Record.Content = root.OuterXml;
-            MessageBox.Show("儲存完成!");
+            if (string.IsNullOrWhiteSpace(_resp.School))
+                MessageBox.Show("未設定學校名稱,請確認學校資訊已設定完成後再繼續...");
+            else
+                _caller.Save(_resp);
+               
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
-        }
-
-        private void txtBody_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
-            {
-                ((TextBox)sender).SelectAll();
-            } 
         }
     }
 }
