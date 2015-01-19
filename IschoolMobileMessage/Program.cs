@@ -1,4 +1,5 @@
-﻿using FISCA.Permission;
+﻿using FISCA;
+using FISCA.Permission;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,10 @@ namespace IschoolMobileMessage
         [FISCA.MainMethod]
         public static void main()
         {
+            //診斷模式不要執行 UDM 更新。(此段code尚未發佈)
+            if (!RTContext.IsDiagMode)
+                ServerModule.AutoManaged("http://module.ischool.com.tw/module/63816/ischool.parent.app/udm.xml");
+
             FISCA.Presentation.RibbonBarItem item1 = FISCA.Presentation.MotherForm.RibbonBarItems["學務作業", "校務通訊"];
             item1["學校公告"].Image = Properties.Resources.script_fav_128;
             item1["學校公告"].Size = FISCA.Presentation.RibbonBarButton.MenuButtonSize.Large;
